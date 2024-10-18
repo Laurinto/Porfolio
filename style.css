@@ -1,0 +1,225 @@
+:root{
+    --clr-bg: #f1dddd;
+    --clr-primary: #F5F5F5;
+    --clr-secondary: #cf88b2;
+    --clr-button: #e695a9;
+    --ft-fml: bree serif;
+
+
+    --pink: #ecb2ba;
+    --pink-dark: #c6939a;
+    --tape-gray: #dbd8be;
+    --tape-edge-gray: #b7b49d;
+    --transparent: rgba(255, 255, 255, 0);
+}
+
+@font-face {
+  font-family: "bree serif";
+  src: url("Fonts/BreeSerif-Regular.ttf") format("truetype");}
+
+p{font-family:bree serif;}
+h1{font-family:bree serif; font-size: 50px;}
+h2{font-family:bree serif;}
+h3{font-family:bree serif;}
+h4{font-family:bree serif;}
+li{font-family:bree serif;}
+
+label{display: block;}
+
+
+html{
+    margin: 0px;
+    background-color: #f1dddd;
+     scroll-behavior: smooth;
+    scroll-timeline: --page-scroll block;
+  }
+
+aside {
+    width: 200px;
+    height: 100svh;
+    position: fixed;
+    top: 25lvh;
+    right: 0vw;
+    vertical-align: middle;
+  }
+
+  main{
+    margin-right: 20vw;
+    margin-left: 20vw;
+  }
+
+
+  /*Necesito comprender*/
+aside > ul > li {line-height: var(--_height);}
+
+  aside > ul {
+    --_height: 3rem;
+    --_clr-highlight: var(--clr-secondary);
+    position: relative;
+  
+    display: grid;
+    gap: var(--gap);
+    list-style: none;
+    color: white;
+    text-transform: capitalize;
+    font-weight: 200;
+    
+  }
+
+  aside > ul::before,
+  aside > ul::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    width: 4px;
+    border-radius: 5px;
+    z-index: -2;
+    background: rgba(from var(--clr-secondary) r g b / .25);
+    height: 100%;
+  }
+
+  aside > ul::after {
+    height: var(--_height); /* same height as the list items */
+    background: var(--_clr-highlight);
+    animation-name: progress-bar;
+    animation-duration: 1ms;
+    animation-timing-function: linear;
+    animation-timeline: --page-scroll;
+  }
+
+/*Necesito comprender*/
+
+section + section{
+    margin-block-start: 2rem;
+  }
+
+
+  @keyframes progress-bar {
+    from {
+      top: 0;
+    }
+    to {
+      top: calc(100% - var(--_height));
+    }
+  }
+
+
+  /*-----------------------------------------*/
+
+
+  .top-tape {
+    position: absolute;
+    height: 4vmin;
+    top: -5px;
+    width: 110%;
+    background-color: var(--tape-gray);
+    border-right: 1px dotted var(--tape-edge-gray);
+    border-left: 1px dotted var(--tape-edge-gray);
+    opacity: 0.5;
+  }
+
+/*-------- https://www.imaginanet.com/blog/minmaxing-aprendiendo-vmin-y-vmax-en-css.html ------------*/
+
+  .paper {
+    position: relative;
+    background: linear-gradient(
+        to bottom right,
+        var(--paper-dark),
+        20%,
+        var(--transparent)
+      ),
+      var(--paper-color);
+    min-width: 250px;
+    min-height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Caveat", cursive;
+    font-size: 2rem;
+    box-shadow: var(--shadow-size) var(--shadow-size) 2px var(--paper-dark);
+    margin: auto;
+    margin-top: 50px;
+  }
+  
+  .paper::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        var(--transparent),
+        50%,
+        var(--paper-dark),
+        51%,
+        var(--transparent)
+      ),
+      linear-gradient(
+        to right,
+        var(--transparent),
+        50%,
+        var(--paper-dark),
+        51%,
+        var(--transparent)
+      );
+  }
+
+  .blue {
+    --paper-color: #d5e0f9;
+    --paper-dark: #c2d0ea;
+    --shadow-size: 3px;
+    --transparent: rgba(213, 224, 249, 0);
+  }
+
+  /*Barra lateral  --> https://codepen.io/cbolson/pen/OJeaYgZ  */
+
+
+  .notebook {
+    background: #fff;
+  max-width: 500px;
+min-height: 200px;
+  padding: 20px;
+  box-shadow: 0 0 6px 3px rgba(0,0,0,0.1);
+  transform: rotate(-2deg);
+  background-image: -webkit-linear-gradient(left, #b6d7e8, 2px, transparent, 2px, transparent), -webkit-linear-gradient(0, #d9eaf3, 1px, transparent, 2px, transparent);
+  background-image: linear-gradient(90deg, #b6d7e8, 2px, transparent, 2px, transparent), linear-gradient(0, #d9eaf3, 1px, transparent, 2px, transparent);
+  background-position: 4rem 0, 0 5px;
+  background-position-x: 4rem, 0px;
+  background-position-y: 0px, 5px;
+  background-size: 100% 3rem;
+  padding-left: 6rem;
+}
+
+/*Fondo notas --> https://codepen.io/ekeric13/details/VmdgBX */
+
+article {
+    position: relative;
+    margin: 50px auto;
+    padding: 50px;
+    width: 450px;
+    font: 14px/22px 'PT Serif',Georgia,serif;
+    color: #222;
+    text-align: justify;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+}
+
+article::before,
+article::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  box-shadow: inherit;
+  transform: rotate(2deg);
+}
+
+article::after 
+{ transform: rotate(-1deg) }
+
+/*Conjunto de papeles --> https://codepen.io/agrimsrud/details/AVvXyz */
